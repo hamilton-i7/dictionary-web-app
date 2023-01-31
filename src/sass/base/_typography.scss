@@ -1,0 +1,132 @@
+@use "sass:map";
+@use "../abstracts/variables" as v;
+
+$font-weights: (
+  "regular": 400,
+  "bold": 700,
+);
+
+// ---- TYPESCALE ----
+%heading-l {
+  font-weight: map.get($font-weights, "bold");
+  font-size: 3.2rem;
+}
+%heading-m {
+  font-weight: map.get($font-weights, "regular");
+  font-size: 1.8rem;
+}
+%heading-s {
+  font-weight: map.get($font-weights, "regular");
+  font-size: 1.6rem;
+}
+
+%body-m {
+  font-weight: map.get($font-weights, "regular");
+  font-size: 1.5rem;
+  line-height: 2.4;
+}
+%body-s {
+  font-weight: map.get($font-weights, "regular");
+  font-size: 1.4rem;
+}
+
+@media screen and (min-width: map.get(v.$breakpoints, "tablet")) {
+  %heading-l {
+    font-size: 6.4rem;
+  }
+  %heading-m {
+    font-size: 2.4rem;
+  }
+  %heading-s {
+    font-size: 2rem;
+  }
+
+  %body-m {
+    font-size: 1.8rem;
+  }
+}
+
+// ---- INTER ----
+$inter-family: Inter, sans-serif;
+
+.heading-l__inter {
+  @extend %heading-l;
+
+  font-family: $inter-family;
+}
+.heading-m__inter {
+  @extend %heading-m;
+
+  font-family: $inter-family;
+}
+.heading-m__inter {
+  @extend %heading-m;
+
+  font-family: $inter-family;
+}
+
+.body-m__inter {
+  @extend %body-m;
+
+  font-family: $inter-family;
+}
+.body-s__inter {
+  @extend %body-s;
+
+  font-family: $inter-family;
+}
+
+// ---- LORA ----
+$inconsolata-family: Lora, serif;
+
+.heading-l__lora {
+  @extend %heading-l;
+
+  font-family: $inconsolata-family;
+}
+.heading-m__lora {
+  @extend %heading-m;
+
+  font-family: $inconsolata-family;
+}
+.heading-m__lora {
+  @extend %heading-m;
+
+  font-family: $inconsolata-family;
+}
+
+.body-m__lora {
+  @extend %body-m;
+
+  font-family: $inconsolata-family;
+}
+
+// ---- INCONSOLATA ----
+$inconsolata-family: Inconsolata, monospace;
+
+.heading-l__inconsolata {
+  @extend %heading-l;
+
+  font-family: $inconsolata-family;
+}
+.heading-m__inconsolata {
+  @extend %heading-m;
+
+  font-family: $inconsolata-family;
+}
+.heading-m__inconsolata {
+  @extend %heading-m;
+
+  font-family: $inconsolata-family;
+}
+
+.body-m__inconsolata {
+  @extend %body-m;
+
+  font-family: $inconsolata-family;
+}
+.body-s__inconsolata {
+  @extend %body-s;
+
+  font-family: $inconsolata-family;
+}
