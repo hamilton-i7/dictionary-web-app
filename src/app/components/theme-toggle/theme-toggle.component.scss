@@ -1,0 +1,110 @@
+@use "../../../sass/abstracts/variables" as v;
+@use "../../../sass/themes/helpers";
+
+%inactive {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+%before-animation {
+  $duration: map-get(
+    $map: v.$duration,
+    $key: "shorter",
+  );
+
+  transition: $duration cubic-bezier(0.24, 0, 0.5, 1);
+}
+
+%after-animation {
+  $duration: map-get(
+    $map: v.$duration,
+    $key: "complex",
+  );
+
+  transition: $duration cubic-bezier(0.54, 1.6, 0.5, 1);
+}
+
+.container {
+  align-items: center;
+  column-gap: 1.2rem;
+  display: flex;
+}
+
+.theme-toggle {
+  opacity: 0;
+  position: absolute;
+
+  &__label {
+    border-radius: 6rem;
+    display: inline-block;
+    height: 2rem;
+    position: relative;
+    user-select: none;
+    width: 4rem;
+
+    &::before {
+      @extend %inactive;
+      @extend %before-animation;
+      $background-color: helpers.theme(
+        $key: "on-surface",
+      );
+
+      background-color: $background-color;
+      border-radius: 3rem;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    &::after {
+      @extend %inactive;
+      @extend %after-animation;
+
+      background-color: #fff;
+      border-radius: 6rem;
+      height: 1.4rem;
+      left: 0.3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.4rem;
+    }
+  }
+
+  &:checked + &__label {
+    &::before {
+      $background-color: helpers.theme(
+        $key: "primary",
+      );
+      $duration: map-get(
+        $map: v.$duration,
+        $key: "shorter",
+      );
+
+      background-color: $background-color;
+      transition: width $duration cubic-bezier(0, 0, 0, 0.1);
+    }
+
+    &::after {
+      left: 2.25rem;
+    }
+  }
+
+  &:checked ~ &__icon {
+    $stroke-color: helpers.theme(
+      $key: "primary",
+    );
+
+    stroke: $stroke-color;
+  }
+
+  &__icon {
+    $stroke-color: helpers.theme(
+      $key: "on-surface",
+    );
+
+    stroke: $stroke-color;
+    width: 2rem;
+  }
+}

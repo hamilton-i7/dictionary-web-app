@@ -1,0 +1,14 @@
+<app-text-button
+  label="Sans Serif"
+  (btnClick)="openMenu()"
+  (clickOutside)="hideMenu()"
+></app-text-button>
+<div class="overlay">
+  <menu class="menu" *ngIf="showMenu">
+    <li class="menu__item sans-serif">
+      <button type="button">Sans Serif</button>
+    </li>
+    <li class="menu__item serif"><button type="button">Serif</button></li>
+    <li class="menu__item mono"><button type="button">Mono</button></li>
+  </menu>
+</div>

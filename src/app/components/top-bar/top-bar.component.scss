@@ -1,0 +1,26 @@
+@use "../../../sass/themes/helpers";
+
+.top-bar {
+  align-items: center;
+  display: flex;
+  height: 6.4rem;
+  justify-content: space-between;
+  padding: 0 2.4rem;
+  position: relative;
+
+  &__logo {
+    width: 2.8rem;
+  }
+
+  &__options {
+    align-items: center;
+    display: flex;
+  }
+
+  &__divider {
+    border-left: 0.1rem solid helpers.theme($key: "outline");
+    height: 3.2rem;
+    margin-left: 0.4rem;
+    margin-right: 1.6rem;
+  }
+}
