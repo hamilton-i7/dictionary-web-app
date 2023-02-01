@@ -46,87 +46,12 @@ $font-weights: (
   }
 }
 
-// ---- INTER ----
-$inter-family: Inter, sans-serif;
-
-.heading-l__inter {
-  @extend %heading-l;
-
-  font-family: $inter-family;
+.sans-serif {
+  font-family: Inter, sans-serif;
 }
-.heading-m__inter {
-  @extend %heading-m;
-
-  font-family: $inter-family;
+.serif {
+  font-family: Lora, serif;
 }
-.heading-m__inter {
-  @extend %heading-m;
-
-  font-family: $inter-family;
-}
-
-.body-m__inter {
-  @extend %body-m;
-
-  font-family: $inter-family;
-}
-.body-s__inter {
-  @extend %body-s;
-
-  font-family: $inter-family;
-}
-
-// ---- LORA ----
-$inconsolata-family: Lora, serif;
-
-.heading-l__lora {
-  @extend %heading-l;
-
-  font-family: $inconsolata-family;
-}
-.heading-m__lora {
-  @extend %heading-m;
-
-  font-family: $inconsolata-family;
-}
-.heading-m__lora {
-  @extend %heading-m;
-
-  font-family: $inconsolata-family;
-}
-
-.body-m__lora {
-  @extend %body-m;
-
-  font-family: $inconsolata-family;
-}
-
-// ---- INCONSOLATA ----
-$inconsolata-family: Inconsolata, monospace;
-
-.heading-l__inconsolata {
-  @extend %heading-l;
-
-  font-family: $inconsolata-family;
-}
-.heading-m__inconsolata {
-  @extend %heading-m;
-
-  font-family: $inconsolata-family;
-}
-.heading-m__inconsolata {
-  @extend %heading-m;
-
-  font-family: $inconsolata-family;
-}
-
-.body-m__inconsolata {
-  @extend %body-m;
-
-  font-family: $inconsolata-family;
-}
-.body-s__inconsolata {
-  @extend %body-s;
-
-  font-family: $inconsolata-family;
+.mono {
+  font-family: Inconsolata, monospace;
 }
