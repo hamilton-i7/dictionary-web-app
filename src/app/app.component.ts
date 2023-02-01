@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Font, FontService } from './font.service';
+import { Font, FontService } from './features/share/services/font.service';
 
 @Component({
   selector: 'app-root',
