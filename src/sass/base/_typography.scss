@@ -30,6 +30,11 @@ $font-weights: (
   font-size: 1.4rem;
 }
 
+%button {
+  font-weight: map.get($font-weights, "bold");
+  font-size: 1.5rem;
+}
+
 @media screen and (min-width: map.get(v.$breakpoints, "tablet")) {
   %heading-l {
     font-size: 6.4rem;
@@ -41,7 +46,8 @@ $font-weights: (
     font-size: 2rem;
   }
 
-  %body-m {
+  %body-m,
+  %button {
     font-size: 1.8rem;
   }
 }
