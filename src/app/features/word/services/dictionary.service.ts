@@ -16,7 +16,7 @@ export class DictionaryService {
 
   getWord(word: string): Observable<Word[]> {
     return this.http
-      .get<Word[]>(`${environment.apiUrl}/${word}`)
+      .get<Word[]>(`${environment.apiUrl}/${word}`, this.httpOptions)
       .pipe(catchError(this.handleError<Word[]>('getWord', [])));
   }
 
