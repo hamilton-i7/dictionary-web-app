@@ -7,10 +7,16 @@ import { SearchQuery } from '../../../../core/models/query';
   styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent {
+  @Input() value = '';
+  @Output() valueChange = new EventEmitter();
   @Input() error = false;
   @Output() enterPress = new EventEmitter<SearchQuery>();
 
   onSearch(query: string): void {
     this.enterPress.emit({ query });
+  }
+
+  onValueChange(value: string): void {
+    this.valueChange.emit({ value });
   }
 }

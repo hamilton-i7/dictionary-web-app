@@ -6,6 +6,8 @@
       class="text-field__input"
       #searchBox
       (keyup.enter)="onSearch(searchBox.value)"
+      [value]="value"
+      (input)="onValueChange(searchBox.value)"
     />
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +25,7 @@
       />
     </svg>
   </div>
-  <p class="text-field__error-message" *ngIf="error">
-    Whoops, can't be empty...
+  <p class="text-field__error-message">
+    {{ error ? "Whoops, can't be empty..." : "&nbsp;" }}
   </p>
 </div>
