@@ -1,6 +1,6 @@
 export interface Word {
   word: string;
-  phonetic: string;
+  phonetic?: string;
   phonetics: {
     text: string;
     audio: string;
