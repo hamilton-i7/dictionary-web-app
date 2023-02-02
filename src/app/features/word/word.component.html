@@ -1,0 +1,8 @@
+<main class="container">
+  <app-search-word
+    [word]="word?.word"
+    [phonetic]="word?.phonetic"
+    [audioSrc]="audioSrc"
+    (search)="getWord($event)"
+  ></app-search-word>
+</main>
