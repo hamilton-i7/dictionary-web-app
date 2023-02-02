@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchWordComponent } from './search-word.component';
+import { WordDetailComponent } from './word-detail.component';
 
-describe('SearchWordComponent', () => {
-  let component: SearchWordComponent;
-  let fixture: ComponentFixture<SearchWordComponent>;
+describe('WordDetailComponent', () => {
+  let component: WordDetailComponent;
+  let fixture: ComponentFixture<WordDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchWordComponent ]
+      declarations: [ WordDetailComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SearchWordComponent);
+    fixture = TestBed.createComponent(WordDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

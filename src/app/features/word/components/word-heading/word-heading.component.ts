@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SearchQuery } from '../../../../core/models/query';
 
 @Component({
-  selector: 'app-search-word',
-  templateUrl: './search-word.component.html',
-  styleUrls: ['./search-word.component.scss'],
+  selector: 'app-word-heading',
+  templateUrl: './word-heading.component.html',
+  styleUrls: ['./word-heading.component.scss'],
 })
-export class SearchWordComponent {
+export class WordHeadingComponent {
   @Input() word?: string;
   @Input() phonetic?: string;
   @Input() audioSrc?: string;

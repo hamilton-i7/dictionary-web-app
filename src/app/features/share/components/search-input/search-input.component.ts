@@ -8,9 +8,9 @@ import { SearchQuery } from '../../../../core/models/query';
 })
 export class SearchInputComponent {
   @Input() error = false;
-  @Output() valueChange = new EventEmitter<SearchQuery>();
+  @Output() enterPress = new EventEmitter<SearchQuery>();
 
   onSearch(query: string): void {
-    this.valueChange.emit({ query });
+    this.enterPress.emit({ query });
   }
 }

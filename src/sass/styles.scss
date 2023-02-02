@@ -7,3 +7,9 @@ app-root {
   flex-direction: column;
   height: 100%;
 }
+
+app-browse {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}

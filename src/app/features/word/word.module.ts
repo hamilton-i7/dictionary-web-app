@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/share.module';
-import { SearchWordComponent } from './components/search-word/search-word.component';
+import { WordHeadingComponent } from './components/word-heading/word-heading.component';
 import { WordMeaningComponent } from './components/word-meaning/word-meaning.component';
 import { WordRoutingModule } from './word-routing.module';
-import { WordComponent } from './pages/home/word.component';
+import { BrowseComponent } from './pages/browse/browse.component';
+import { WordDetailComponent } from './pages/word-detail/word-detail.component';
 
 @NgModule({
-  declarations: [WordComponent, SearchWordComponent, WordMeaningComponent],
+  declarations: [
+    BrowseComponent,
+    WordHeadingComponent,
+    WordMeaningComponent,
+    WordDetailComponent,
+  ],
   imports: [CommonModule, ShareModule, WordRoutingModule],
-  exports: [WordComponent],
+  exports: [WordRoutingModule],
 })
 export class WordModule {}

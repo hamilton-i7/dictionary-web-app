@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { WordComponent } from './pages/home/word.component';
+import { BrowseComponent } from './pages/browse/browse.component';
+import { WordDetailComponent } from './pages/word-detail/word-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/browse', pathMatch: 'full' },
-  { path: 'browse', component: WordComponent },
+  { path: 'browse', component: BrowseComponent },
+  { path: 'browse/:word', component: WordDetailComponent },
 ];
 
 @NgModule({
