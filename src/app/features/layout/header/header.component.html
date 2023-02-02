@@ -1,0 +1,9 @@
+<header>
+  <app-top-bar></app-top-bar>
+  <app-search-input
+    [error]="isError"
+    (enterPress)="goToWord($event)"
+    [value]="inputValue"
+    (valueChange)="onInputChange($event)"
+  ></app-search-input>
+</header>

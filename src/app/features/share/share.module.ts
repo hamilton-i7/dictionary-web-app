@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FontMenuComponent } from './components/font-menu/font-menu.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { TextButtonComponent } from './components/text-button/text-button.component';
@@ -16,7 +17,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     TopBarComponent,
     ClickOutsideDirective,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     FontMenuComponent,
     SearchInputComponent,

@@ -5,7 +5,6 @@ import { BrowseComponent } from './pages/browse/browse.component';
 import { WordDetailComponent } from './pages/word-detail/word-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/browse', pathMatch: 'full' },
   { path: 'browse', component: BrowseComponent },
   { path: 'browse/:word', component: WordDetailComponent },
 ];
@@ -13,6 +12,5 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule],
 })
 export class WordRoutingModule {}
