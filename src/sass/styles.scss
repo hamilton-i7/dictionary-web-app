@@ -1,3 +1,9 @@
 @use "./base/reset";
 @use "./base/typography";
 @use "./abstracts/placeholders";
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

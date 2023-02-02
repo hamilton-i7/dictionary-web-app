@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { WordModule } from './features/word/word.module';
 import { ShareModule } from './features/share/share.module';
+import { WordModule } from './features/word/word.module';
 
 @NgModule({
   declarations: [AppComponent],

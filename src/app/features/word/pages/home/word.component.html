@@ -1,0 +1,17 @@
+<main class="container">
+  <app-search-word
+    [word]="word?.word"
+    [phonetic]="word?.phonetic"
+    [audioSrc]="audioSrc"
+    (search)="getWord($event)"
+  ></app-search-word>
+
+  <figure class="search__img-container">
+    <img
+      src="../../../../../assets/adventure.svg"
+      alt="Man looking at scaled-down planet Earth"
+      class="search__img"
+    />
+    <figcaption class="search__img-caption">Search a word</figcaption>
+  </figure>
+</main>

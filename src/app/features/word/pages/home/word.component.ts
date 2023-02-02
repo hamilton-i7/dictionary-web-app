@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { SearchQuery } from '../../core/models/query';
-import { Word } from '../../core/models/word';
-import { DictionaryService } from './services/dictionary.service';
+import { SearchQuery } from '../../../../core/models/query';
+import { Word } from '../../../../core/models/word';
+import { DictionaryService } from '../../services/dictionary.service';
 
 @Component({
   selector: 'app-word',
