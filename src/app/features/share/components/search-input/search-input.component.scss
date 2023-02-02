@@ -1,0 +1,142 @@
+@use "../../../../../sass/base/typography";
+@use "../../../../../sass/themes/helpers";
+@use "../../../../../sass/abstracts/variables" as v;
+
+$font-weight: map-get(
+  $map: typography.$font-weights,
+  $key: "bold",
+);
+
+.text-field {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+  }
+
+  &__inner-container {
+    position: relative;
+  }
+
+  &__input {
+    @extend %heading-s;
+
+    $background-color: helpers.theme(
+      $key: "surface",
+    );
+
+    background-color: $background-color;
+    border: none;
+    border-radius: 1.6rem;
+    font-weight: $font-weight;
+    height: 4.8rem;
+    outline: none;
+    padding-left: 2.4rem;
+    padding-right: 4.8rem;
+    width: 100%;
+
+    &:focus,
+    &:active {
+      $outline-color: helpers.theme(
+        $key: "primary",
+      );
+
+      outline: 0.1rem solid $outline-color;
+    }
+
+    &::placeholder {
+      @extend %heading-s;
+
+      $color: helpers.alpha(
+        $hexColor:
+          helpers.theme(
+            $key: "on-background",
+          ),
+        $alpha: 0.25,
+      );
+
+      color: $color;
+      font-weight: $font-weight;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    &::-ms-clear,
+    &::-ms-reveal {
+      display: none;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  &__icon {
+    $color: helpers.theme(
+      $key: "primary",
+    );
+    $duration: map-get(
+      $map: v.$duration,
+      $key: "shortest",
+    );
+
+    align-items: center;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: 3.2rem;
+    justify-content: center;
+    outline: none;
+    position: absolute;
+    right: 2.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color $duration ease;
+    width: 3.2rem;
+
+    &:focus,
+    &:hover {
+      $background-color: helpers.alpha(
+        $hexColor:
+          helpers.theme(
+            $key: "on-surface",
+          ),
+        $alpha: 0.12,
+      );
+
+      background-color: $background-color;
+    }
+
+    &:active {
+      $background-color: helpers.alpha(
+        $hexColor:
+          helpers.theme(
+            $key: "on-surface",
+          ),
+        $alpha: 0.24,
+      );
+
+      background-color: $background-color;
+    }
+
+    & > svg {
+      stroke: $color;
+    }
+  }
+
+  &__error-message {
+    @extend %body-s;
+
+    $color: helpers.theme(
+      $key: "error",
+    );
+
+    color: $color;
+    padding-left: 2.4rem;
+  }
+}

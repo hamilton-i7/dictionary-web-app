@@ -1,0 +1,82 @@
+@use "../../../../../sass/base/typography";
+@use "../../../../../sass/themes/helpers";
+@use "../../../../../sass/abstracts/variables" as v;
+
+.word {
+  &__header-details {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+  }
+
+  &__title {
+    @extend %heading-l;
+  }
+
+  &__phonetic {
+    @extend %heading-m;
+
+    $color: helpers.theme(
+      $key: "primary",
+    );
+
+    color: $color;
+  }
+
+  &__play-button {
+    $color: helpers.theme(
+      $key: "primary",
+    );
+    $background-color: helpers.alpha(
+      $hexColor: $color,
+      $alpha: 0.25,
+    );
+    $duration: map-get(
+      $map: v.$duration,
+      $key: "shortest",
+    );
+    $easing: map-get(
+      $map: v.$easing,
+      $key: "sharp",
+    );
+
+    align-items: center;
+    background-color: $background-color;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    fill: $color;
+    height: 4.8rem;
+    justify-content: center;
+    outline: none;
+    transition: $duration $easing;
+    transition-property: background-color, fill;
+    width: 4.8rem;
+
+    &:focus {
+      $color: helpers.theme(
+        $key: "primary",
+      );
+
+      border: 0.1rem solid $color;
+    }
+
+    &:hover,
+    &:active {
+      $background-color: helpers.theme(
+        $key: "primary",
+      );
+
+      background-color: $background-color;
+      fill: #fff;
+    }
+
+    & > svg {
+      height: auto;
+      scale: 1.2;
+      width: 100%;
+    }
+  }
+}

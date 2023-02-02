@@ -8,6 +8,11 @@
 }
 
 .menu {
+  $background-color: helpers.theme(
+    $key: "background",
+  );
+
+  background-color: $background-color;
   border-radius: 1.6rem;
   box-shadow: 0 0.5rem 3rem rgba(#000, 0.1);
   list-style: none;
