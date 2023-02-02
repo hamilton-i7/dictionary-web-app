@@ -8,7 +8,12 @@
       <h1 class="word__title">{{ word | lowercase }}</h1>
       <p class="word__phonetic">{{ phonetic }}</p>
     </div>
-    <button type="button" class="word__play-button" *ngIf="audioSrc">
+    <button
+      type="button"
+      class="word__play-button"
+      (click)="playAudio()"
+      *ngIf="audioSrc"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="75"
@@ -20,6 +25,5 @@
         </g>
       </svg>
     </button>
-    <audio [src]="audioSrc" *ngIf="audioSrc"></audio>
   </div>
 </header>
