@@ -7,6 +7,7 @@ import { TextButtonComponent } from './components/text-button/text-button.compon
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -26,5 +27,6 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     TopBarComponent,
     ClickOutsideDirective,
   ],
+  providers: [CookieService],
 })
 export class ShareModule {}

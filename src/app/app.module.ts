@@ -23,7 +23,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LayoutModule,
     AppRoutingModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
