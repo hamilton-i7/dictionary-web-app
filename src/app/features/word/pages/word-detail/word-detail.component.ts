@@ -13,6 +13,7 @@ export class WordDetailComponent implements OnInit {
   @Input() word?: Word;
   audioSrc?: string;
   phonetic?: string;
+  sourceUrl = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +38,7 @@ export class WordDetailComponent implements OnInit {
 
       this.word = words[0];
       this.phonetic = this.word?.phonetic;
+      this.sourceUrl = words[0].sourceUrls[0];
       this.getAudioSrc();
     });
   }

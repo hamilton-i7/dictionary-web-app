@@ -1,5 +1,8 @@
+@use "../../../../../sass/themes/helpers";
+@use "../../../../../sass/base/typography";
+
 .container {
-  padding: 0 2.4rem;
+  padding: 0 2.4rem 8.4rem;
 }
 
 .meaning {
@@ -9,5 +12,45 @@
     list-style: none;
     padding: 0;
     row-gap: 3.2rem;
+  }
+}
+
+.divider {
+  border: 0.1rem solid helpers.theme($key: "outline");
+  margin-bottom: 2.4rem;
+  margin-top: 3.2rem;
+}
+
+.source {
+  &__title {
+    @extend %body-s;
+
+    color: helpers.theme($key: "on-surface");
+    margin-bottom: 0.8rem;
+    text-decoration: underline;
+  }
+
+  &__link {
+    align-items: center;
+    display: flex;
+    column-gap: 0.4rem;
+
+    &-text,
+    &:visited {
+      @extend %body-s;
+      color: helpers.theme($key: "on-background");
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: helpers.theme($key: "primary");
+      }
+    }
+
+    &-icon {
+      height: 1.2rem;
+      stroke: helpers.theme($key: "on-surface");
+      width: 1.2rem;
+    }
   }
 }
