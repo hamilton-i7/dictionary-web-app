@@ -14,7 +14,11 @@
     <h3 class="synonyms__title">Synonyms</h3>
     <ul class="synonyms__list">
       <li class="synonyms__list-item" *ngFor="let synonym of synonyms">
-        <a href="/" class="synonyms__list-item-link">{{ synonym }}</a>
+        <a
+          [routerLink]="'/browse/' + synonym"
+          class="synonyms__list-item-link"
+          >{{ synonym }}</a
+        >
       </li>
     </ul>
   </footer>

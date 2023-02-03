@@ -35,8 +35,11 @@
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
     list-style: disc;
     padding-left: 2.4rem;
+    row-gap: 1.2rem;
 
     &-item {
       color: helpers.theme($key: "secondary");
@@ -50,7 +53,7 @@
       &-example {
         @extend %body-m;
         color: helpers.theme($key: "on-surface");
-        margin-top: 1.2rem;
+        margin-top: 0.4rem;
       }
     }
   }
