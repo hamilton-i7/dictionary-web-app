@@ -1,5 +1,4 @@
 @use "../../../../../sass/abstracts/variables" as v;
-@use "../../../../../sass/themes/helpers";
 
 %inactive {
   content: "";
@@ -46,11 +45,7 @@
     &::before {
       @extend %inactive;
       @extend %before-animation;
-      $background-color: helpers.theme(
-        $key: "on-surface",
-      );
 
-      background-color: $background-color;
       border-radius: 3rem;
       height: 100%;
       left: 0;
@@ -74,15 +69,11 @@
 
   &:checked + &__label {
     &::before {
-      $background-color: helpers.theme(
-        $key: "primary",
-      );
       $duration: map-get(
         $map: v.$duration,
         $key: "shorter",
       );
 
-      background-color: $background-color;
       transition: width $duration cubic-bezier(0, 0, 0, 0.1);
     }
 
@@ -91,20 +82,7 @@
     }
   }
 
-  &:checked ~ &__icon {
-    $stroke-color: helpers.theme(
-      $key: "primary",
-    );
-
-    stroke: $stroke-color;
-  }
-
   &__icon {
-    $stroke-color: helpers.theme(
-      $key: "on-surface",
-    );
-
-    stroke: $stroke-color;
     width: 2rem;
   }
 }

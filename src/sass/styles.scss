@@ -1,6 +1,8 @@
 @use "./base/reset";
 @use "./base/typography";
 @use "./abstracts/placeholders";
+@use "./themes/light-theme";
+@use "./themes/dark-theme";
 
 app-root {
   display: flex;

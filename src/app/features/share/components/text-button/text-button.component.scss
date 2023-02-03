@@ -1,29 +1,14 @@
-@use "../../../../../sass/themes/helpers";
 @use "../../../../../sass/abstracts/placeholders";
 @use "../../../../../sass/base/typography";
-@use "../../../../../sass/abstracts/functions" as fn;
 
 .text-button {
-  $background-color: helpers.alpha(
-    $hexColor:
-      helpers.theme(
-        $key: "primary",
-      ),
-    $alpha: 0.08,
-  );
-
   @extend %basic-button;
   @extend %button;
 
   border-radius: 2rem;
   column-gap: 1.6rem;
 
-  &:focus {
-    outline: 0.2rem solid $background-color;
-  }
-
   &__icon {
-    stroke: helpers.theme($key: "primary");
     width: 1.2rem;
     height: 0.6rem;
   }

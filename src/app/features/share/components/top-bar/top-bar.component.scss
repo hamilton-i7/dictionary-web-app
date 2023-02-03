@@ -1,5 +1,3 @@
-@use "../../../../../sass/themes/helpers";
-
 .top-bar {
   align-items: center;
   display: flex;
@@ -18,7 +16,6 @@
   }
 
   &__divider {
-    border-left: 0.1rem solid helpers.theme($key: "outline");
     height: 3.2rem;
     margin-left: 0.4rem;
     margin-right: 1.6rem;

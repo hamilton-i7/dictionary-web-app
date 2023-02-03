@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Font, FontService } from './features/share/services/font.service';
+import { Theme, ThemeService } from './features/share/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,24 @@ import { Font, FontService } from './features/share/services/font.service';
 export class AppComponent implements OnInit {
   title = 'Dictionary Web App';
   font?: Font;
+  theme?: Theme;
 
-  constructor(private fontService: FontService) {}
+  @HostBinding('class') get classAttribute() {
+    const font = this.getFontClass();
+    return `${font} theme-${this.theme}`;
+  }
+
+  constructor(
+    private fontService: FontService,
+    private themeService: ThemeService
+  ) {}
 
   ngOnInit(): void {
     this.fontService.font.subscribe((font) => (this.font = font));
+    this.themeService.theme.subscribe((theme) => (this.theme = theme));
   }
 
-  @HostBinding('class') get fontClass(): string {
+  private getFontClass(): string {
     switch (this.font) {
       case Font.SERIF:
         return 'serif';

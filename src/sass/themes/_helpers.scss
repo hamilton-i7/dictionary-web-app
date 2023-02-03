@@ -1,14 +1,5 @@
 @use "../abstracts/functions" as fn;
-@use "./light-theme" as lt;
-@use "./dark-theme" as dt;
 
 @function alpha($hexColor, $alpha) {
   @return rgba($hexColor, $alpha);
-}
-
-@function theme($name: "light", $key) {
-  @if $name == "light" {
-    @return fn.map-get-value(lt.$light-theme-map, $key);
-  }
-  @return fn.map-get-value(dt.$dark-theme-map, $key);
 }

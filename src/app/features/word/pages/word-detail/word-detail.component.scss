@@ -1,4 +1,3 @@
-@use "../../../../../sass/themes/helpers";
 @use "../../../../../sass/base/typography" as tp;
 
 .container {
@@ -16,7 +15,6 @@
 }
 
 .divider {
-  border: 0.1rem solid helpers.theme($key: "outline");
   margin-bottom: 2.4rem;
   margin-top: 3.2rem;
 }
@@ -25,7 +23,6 @@
   &__title {
     @extend %body-s;
 
-    color: helpers.theme($key: "on-surface");
     margin-bottom: 0.8rem;
     text-decoration: underline;
   }
@@ -33,7 +30,6 @@
   &__link {
     align-items: center;
     display: flex;
-    color: helpers.theme($key: "on-background");
     column-gap: 0.4rem;
 
     &-text,
@@ -41,15 +37,8 @@
       @extend %body-s;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      color: helpers.theme($key: "primary");
-    }
-
     &-icon {
       height: 1.2rem;
-      stroke: helpers.theme($key: "on-surface");
       width: 1.2rem;
     }
   }
@@ -75,6 +64,5 @@
 
   &__description {
     @extend %body-m;
-    color: helpers.theme($key: "on-surface");
   }
 }

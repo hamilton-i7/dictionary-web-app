@@ -1,5 +1,4 @@
 @use "../../../../../sass/base/typography" as tp;
-@use "../../../../../sass/themes/helpers";
 
 .part-of-speech {
   &__container {
@@ -17,11 +16,6 @@
   }
 
   &__divider {
-    $color: helpers.theme(
-      $key: "outline",
-    );
-
-    border: 0.1rem solid $color;
     width: 100%;
   }
 }
@@ -29,8 +23,6 @@
 .meaning {
   &__title {
     @extend %heading-s;
-
-    color: helpers.theme($key: "on-surface");
     margin-bottom: 1.2rem;
   }
 
@@ -42,17 +34,14 @@
     row-gap: 1.2rem;
 
     &-item {
-      color: helpers.theme($key: "secondary");
       font-size: 1.6rem;
 
       &-text {
         @extend %body-m;
-        color: helpers.theme($key: "on-background");
       }
 
       &-example {
         @extend %body-m;
-        color: helpers.theme($key: "on-surface");
         margin-top: 0.4rem;
       }
     }
@@ -69,8 +58,6 @@
 
   &__title {
     @extend %heading-s;
-
-    color: helpers.theme($key: "on-surface");
   }
 
   &__list {
@@ -87,14 +74,7 @@
 
       &-link,
       &:visited {
-        color: helpers.theme($key: "primary");
         text-decoration: none;
-
-        &:hover,
-        &:focus,
-        &:active {
-          text-decoration: underline solid helpers.theme($key: "primary");
-        }
       }
     }
   }

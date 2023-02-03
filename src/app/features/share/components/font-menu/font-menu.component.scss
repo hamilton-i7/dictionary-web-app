@@ -1,18 +1,12 @@
 @use "../../../../../sass/abstracts/variables" as v;
 @use "../../../../../sass/abstracts/placeholders";
 @use "../../../../../sass/base/typography";
-@use "../../../../../sass/themes/helpers";
 
 .overlay {
   position: relative;
 }
 
 .menu {
-  $background-color: helpers.theme(
-    $key: "background",
-  );
-
-  background-color: $background-color;
   border-radius: 1.6rem;
   box-shadow: 0 0.5rem 3rem rgba(#000, 0.1);
   display: none;
@@ -39,19 +33,6 @@
       transition: color map-get($map: v.$duration, $key: "shortest")
         map-get($map: v.$easing, $key: "sharp");
       width: 100%;
-
-      &:hover {
-        color: helpers.theme($key: "primary");
-      }
-      &:focus {
-        $background-color: helpers.alpha(
-          helpers.theme(
-            $key: "outline",
-          ),
-          0.42
-        );
-        background-color: $background-color;
-      }
     }
   }
 }
