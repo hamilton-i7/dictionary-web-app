@@ -6,6 +6,7 @@ import { WordMeaningComponent } from './components/word-meaning/word-meaning.com
 import { WordRoutingModule } from './word-routing.module';
 import { BrowseComponent } from './pages/browse/browse.component';
 import { WordDetailComponent } from './pages/word-detail/word-detail.component';
+import { MapDefinitionPipe } from './pipes/map-definition.pipe';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { WordDetailComponent } from './pages/word-detail/word-detail.component';
     WordHeadingComponent,
     WordMeaningComponent,
     WordDetailComponent,
+    MapDefinitionPipe,
   ],
   imports: [CommonModule, ShareModule, WordRoutingModule],
   exports: [WordRoutingModule],

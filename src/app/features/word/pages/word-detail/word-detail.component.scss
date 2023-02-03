@@ -1,3 +1,13 @@
 .container {
   padding: 0 2.4rem;
 }
+
+.meaning {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    row-gap: 3.2rem;
+  }
+}

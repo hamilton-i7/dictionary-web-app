@@ -23,7 +23,7 @@ $font-weights: (
 %body-m {
   font-weight: map.get($font-weights, "regular");
   font-size: 1.5rem;
-  line-height: 2.4;
+  line-height: 2.4rem;
 }
 %body-s {
   font-weight: map.get($font-weights, "regular");

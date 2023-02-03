@@ -12,12 +12,7 @@ export interface Word {
   }[];
   meanings: {
     partOfSpeech: string;
-    definitions: {
-      definition: string;
-      synonyms: string[];
-      antonyms: string[];
-      example?: string;
-    }[];
+    definitions: WordDefinition[];
     synonyms: string[];
     antonyms: string[];
   }[];
@@ -27,3 +22,12 @@ export interface Word {
   };
   sourceUrls: string[];
 }
+
+export type WordDefinition = {
+  definition: string;
+  synonyms: string[];
+  antonyms: string[];
+  example?: string;
+};
+
+export type SimpleDefinition = Pick<WordDefinition, 'definition' | 'example'>;

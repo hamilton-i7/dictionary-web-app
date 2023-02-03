@@ -1,14 +1,21 @@
 <article class="meaning">
   <header class="part-of-speech__container">
-    <h2 class="part-of-speech__title"></h2>
-    <hr class="divider" />
+    <h2 class="part-of-speech__title">{{ partOfSpeech | lowercase }}</h2>
+    <hr class="part-of-speech__divider" />
   </header>
-  <h3 class="meaning__title"></h3>
+  <h3 class="meaning__title">Meaning</h3>
   <ul class="meaning__list">
-    <li class="meaning__list-item"></li>
+    <li class="meaning__list-item" *ngFor="let meaning of meanings">
+      <div class="meaning__list-item-text">{{ meaning.definition }}</div>
+      <div class="meaning__list-item-example">{{ meaning.example }}</div>
+    </li>
   </ul>
   <footer class="synonyms__container">
-    <h3 class="synonyms__title"></h3>
-    <p class="synonyms__item"></p>
+    <h3 class="synonyms__title">Synonyms</h3>
+    <ul class="synonyms__list">
+      <li class="synonyms__list-item" *ngFor="let synonym of synonyms">
+        <a href="/" class="synonyms__list-item-link">{{ synonym }}</a>
+      </li>
+    </ul>
   </footer>
 </article>

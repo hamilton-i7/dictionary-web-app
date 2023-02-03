@@ -4,4 +4,13 @@
     [phonetic]="phonetic"
     [audioSrc]="audioSrc"
   ></app-word-heading>
+  <ul class="meaning__list">
+    <li class="meaning__list-item" *ngFor="let meaning of word.meanings">
+      <app-word-meaning
+        [partOfSpeech]="meaning.partOfSpeech"
+        [meanings]="meaning.definitions | mapDefinition"
+        [synonyms]="meaning.synonyms"
+      ></app-word-meaning>
+    </li>
+  </ul>
 </main>
