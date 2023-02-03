@@ -25,6 +25,7 @@ app-root.theme-dark {
   & app-font-menu {
     & .menu {
       background-color: theme-get("background");
+      box-shadow: 0 0.5rem 3rem theme-get("primary");
 
       & button:hover,
       & button:active {
