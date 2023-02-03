@@ -2,7 +2,7 @@ export interface Word {
   word: string;
   phonetic?: string;
   phonetics: {
-    text: string;
+    text?: string;
     audio: string;
     sourceUrl?: string;
     license?: {

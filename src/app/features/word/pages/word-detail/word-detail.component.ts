@@ -37,10 +37,20 @@ export class WordDetailComponent implements OnInit {
       if (!words.length) return;
 
       this.word = words[0];
-      this.phonetic = this.word?.phonetic;
       this.sourceUrl = words[0].sourceUrls[0];
       this.getAudioSrc();
+      this.getPhonetic();
     });
+  }
+
+  getPhonetic(): void {
+    if (this.word?.phonetic) {
+      this.phonetic = this.word.phonetic;
+      return;
+    }
+    this.phonetic = this.word?.phonetics.find(
+      (phonetic) => phonetic.text
+    )?.text;
   }
 
   getAudioSrc(): void {
