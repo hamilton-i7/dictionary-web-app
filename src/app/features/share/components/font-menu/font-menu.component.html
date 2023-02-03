@@ -4,11 +4,17 @@
   (clickOutside)="hideMenu()"
 ></app-text-button>
 <div class="overlay">
-  <menu class="menu" *ngIf="showMenu">
+  <menu class="menu" [ngClass]="{ 'scale-in-menu': showMenu }">
     <li class="menu__item sans-serif">
-      <button type="button">Sans Serif</button>
+      <button type="button" (click)="changeFont(font.SANS_SERIF)">
+        Sans Serif
+      </button>
     </li>
-    <li class="menu__item serif"><button type="button">Serif</button></li>
-    <li class="menu__item mono"><button type="button">Mono</button></li>
+    <li class="menu__item serif">
+      <button type="button" (click)="changeFont(font.SERIF)">Serif</button>
+    </li>
+    <li class="menu__item mono">
+      <button type="button" (click)="changeFont(font.MONO)">Mono</button>
+    </li>
   </menu>
 </div>

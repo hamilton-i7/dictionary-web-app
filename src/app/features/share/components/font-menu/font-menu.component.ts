@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Font, FontService } from '../../services/font.service';
 
 @Component({
   selector: 'app-font-menu',
@@ -6,7 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./font-menu.component.scss'],
 })
 export class FontMenuComponent {
+  font: typeof Font = Font;
   showMenu = false;
+
+  constructor(private fontService: FontService) {}
 
   openMenu() {
     this.showMenu = true;
@@ -14,5 +18,9 @@ export class FontMenuComponent {
 
   hideMenu() {
     this.showMenu = false;
+  }
+
+  changeFont(font: Font): void {
+    this.fontService.changeFont(font);
   }
 }

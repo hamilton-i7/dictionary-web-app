@@ -33,18 +33,18 @@
   &__link {
     align-items: center;
     display: flex;
+    color: helpers.theme($key: "on-background");
     column-gap: 0.4rem;
 
     &-text,
     &:visited {
       @extend %body-s;
-      color: helpers.theme($key: "on-background");
+    }
 
-      &:hover,
-      &:focus,
-      &:active {
-        color: helpers.theme($key: "primary");
-      }
+    &:hover,
+    &:focus,
+    &:active {
+      color: helpers.theme($key: "primary");
     }
 
     &-icon {
