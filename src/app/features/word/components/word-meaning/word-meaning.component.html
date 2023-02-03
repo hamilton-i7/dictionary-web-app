@@ -10,7 +10,7 @@
       <div class="meaning__list-item-example">{{ meaning.example }}</div>
     </li>
   </ul>
-  <footer class="synonyms__container">
+  <footer class="synonyms__container" *ngIf="synonyms.length">
     <h3 class="synonyms__title">Synonyms</h3>
     <ul class="synonyms__list">
       <li class="synonyms__list-item" *ngFor="let synonym of synonyms">
