@@ -9,9 +9,10 @@ import { ShareModule } from './features/share/share.module';
 import { WordModule } from './features/word/word.module';
 import { LayoutModule } from './features/layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
