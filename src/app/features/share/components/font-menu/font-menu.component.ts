@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Font, FontService } from '../../services/font.service';
 
 @Component({
@@ -6,11 +6,16 @@ import { Font, FontService } from '../../services/font.service';
   templateUrl: './font-menu.component.html',
   styleUrls: ['./font-menu.component.scss'],
 })
-export class FontMenuComponent {
+export class FontMenuComponent implements OnInit {
   font: typeof Font = Font;
   showMenu = false;
+  selectedFont: Font = Font.SANS_SERIF;
 
   constructor(private fontService: FontService) {}
+
+  ngOnInit(): void {
+    this.fontService.font.subscribe((font) => (this.selectedFont = font));
+  }
 
   openMenu() {
     this.showMenu = true;
