@@ -87,14 +87,6 @@ app-root.theme-light {
         background-color: theme-get("on-surface");
       }
 
-      &:checked + &__label &::before {
-        background-color: theme-get("primary");
-      }
-
-      &:checked ~ &__icon {
-        stroke: theme-get("primary");
-      }
-
       &__icon {
         stroke: theme-get("on-surface");
       }

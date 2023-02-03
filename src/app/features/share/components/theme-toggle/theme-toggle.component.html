@@ -5,6 +5,8 @@
     id="toggle"
     name="toggle"
     aria-label="Switch theme"
+    (click)="changeTheme()"
+    [checked]="darkThemeEnabled"
   />
   <label for="toggle" class="theme-toggle__label"></label>
   <svg
