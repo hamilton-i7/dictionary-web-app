@@ -1,4 +1,4 @@
-<main class="container" *ngIf="word">
+<main class="container" *ngIf="word; else notFound">
   <app-word-heading
     [word]="word.word"
     [phonetic]="phonetic"
@@ -36,3 +36,14 @@
     </a>
   </footer>
 </main>
+
+<ng-template #notFound>
+  <main class="container not-found__container">
+    <div class="not-found__emoji">😕</div>
+    <h1 class="not-found__title">{{ "no definitions found" | titlecase }}</h1>
+    <p class="not-found__description">
+      Sorry pal, we couldn't find definitions for the word you were looking for.
+      You can try the search again at later time or head to the web instead.
+    </p>
+  </main>
+</ng-template>

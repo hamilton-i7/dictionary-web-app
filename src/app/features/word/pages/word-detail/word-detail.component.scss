@@ -1,5 +1,5 @@
 @use "../../../../../sass/themes/helpers";
-@use "../../../../../sass/base/typography";
+@use "../../../../../sass/base/typography" as tp;
 
 .container {
   padding: 0 2.4rem 8.4rem;
@@ -52,5 +52,29 @@
       stroke: helpers.theme($key: "on-surface");
       width: 1.2rem;
     }
+  }
+}
+
+.not-found {
+  &__container {
+    margin-top: 7.2rem;
+    text-align: center;
+  }
+
+  &__emoji {
+    @extend %heading-l;
+    margin-bottom: 3.2rem;
+  }
+
+  &__title {
+    @extend %heading-s;
+
+    font-weight: map-get($map: tp.$font-weights, $key: "bold");
+    margin-bottom: 2.4rem;
+  }
+
+  &__description {
+    @extend %body-m;
+    color: helpers.theme($key: "on-surface");
   }
 }

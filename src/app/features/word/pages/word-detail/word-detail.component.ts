@@ -34,7 +34,10 @@ export class WordDetailComponent implements OnInit {
   getWord(): void {
     const word = this.route.snapshot.paramMap.get('word')!;
     this.dictionaryService.getWord(word).subscribe((words) => {
-      if (!words.length) return;
+      if (!words.length) {
+        this.word = undefined;
+        return;
+      }
 
       this.word = words[0];
       this.sourceUrl = words[0].sourceUrls[0];
