@@ -7,6 +7,10 @@
   @include m.for-size("small-up") {
     padding: 0 4rem 12rem;
   }
+
+  @include m.for-size("large-up") {
+    padding: 0 clamp(8rem, 25%, 75rem) 12rem;
+  }
 }
 
 .meaning {

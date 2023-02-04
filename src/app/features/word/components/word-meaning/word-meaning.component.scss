@@ -1,3 +1,4 @@
+@use "../../../../../sass/abstracts/mixins" as m;
 @use "../../../../../sass/base/typography" as tp;
 
 .part-of-speech {
@@ -6,6 +7,14 @@
     column-gap: 1.6rem;
     display: flex;
     margin-bottom: 3.2rem;
+
+    @include m.for-size("small-up") {
+      column-gap: 3.2rem;
+    }
+
+    @include m.for-size("large-up") {
+      column-gap: 2rem;
+    }
   }
 
   &__title {
@@ -43,6 +52,10 @@
       &-example {
         @extend %body-m;
         margin-top: 0.4rem;
+
+        @include m.for-size("small-up") {
+          margin-top: 1.2rem;
+        }
       }
     }
   }

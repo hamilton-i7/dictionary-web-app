@@ -16,6 +16,10 @@ $font-weight: map-get(
     @include m.for-size("small-up") {
       padding: 0 4rem;
     }
+
+    @include m.for-size("large-up") {
+      padding: 0 clamp(8rem, 25%, 75rem);
+    }
   }
 
   &__inner-container {
@@ -33,6 +37,10 @@ $font-weight: map-get(
     padding-left: 2.4rem;
     padding-right: 4.8rem;
     width: 100%;
+
+    @include m.for-size("small-up") {
+      height: 6.4rem;
+    }
 
     &::placeholder {
       @extend %heading-s;

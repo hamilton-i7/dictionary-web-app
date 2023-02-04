@@ -13,8 +13,16 @@
     padding: 0 4rem;
   }
 
+  @include m.for-size("large-up") {
+    padding: 0 clamp(8rem, 25%, 75rem);
+  }
+
   &__logo {
     width: 2.8rem;
+
+    @include m.for-size("small-up") {
+      width: 3.2rem;
+    }
   }
 
   &__options {

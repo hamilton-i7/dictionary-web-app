@@ -1,5 +1,6 @@
 @use "../../../../../sass/base/typography";
 @use "../../../../../sass/abstracts/variables" as v;
+@use "../../../../../sass/abstracts/mixins" as m;
 
 .word {
   &__header-details {
@@ -8,6 +9,10 @@
     justify-content: space-between;
     margin-top: 0.8rem;
     margin-bottom: 3.2rem;
+
+    @include m.for-size("small-up") {
+      margin-top: 2.4rem;
+    }
   }
 
   &__title {
@@ -39,6 +44,11 @@
     transition: $duration $easing;
     transition-property: background-color, fill;
     width: 4.8rem;
+
+    @include m.for-size("small-up") {
+      height: 7.5rem;
+      width: 7.5rem;
+    }
 
     &:hover,
     &:active {

@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "../abstracts/mixins" as m;
 @use "../abstracts/variables" as v;
 
 $font-weights: (
@@ -35,7 +36,7 @@ $font-weights: (
   font-size: 1.5rem;
 }
 
-@media screen and (min-width: map.get(v.$breakpoints, "tablet")) {
+@include m.for-size("tablet-up") {
   %heading-l {
     font-size: 6.4rem;
   }
