@@ -1,0 +1,37 @@
+@use "./variables" as v;
+
+@mixin for-size($size) {
+  @if $size == "extra-small-up" {
+    @media (min-width: map-get(v.$breakpoints, "xs")) {
+      @content;
+    }
+  } @else if $size == "small-up" {
+    @media (min-width: map-get(v.$breakpoints, "sm")) {
+      @content;
+    }
+  } @else if $size == "tablet-up" {
+    @media (min-width: map-get(v.$breakpoints, "tablet")) {
+      @content;
+    }
+  } @else if $size == "medium-up" {
+    @media (min-width: map-get(v.$breakpoints, "md")) {
+      @content;
+    }
+  } @else if $size == "large-up" {
+    @media (min-width: map-get(v.$breakpoints, "lg")) {
+      @content;
+    }
+  } @else if $size == "desktop-up" {
+    @media (min-width: map-get(v.$breakpoints, "desktop")) {
+      @content;
+    }
+  } @else if $size == "extra-large-up" {
+    @media (min-width: map-get(v.$breakpoints, "xl")) {
+      @content;
+    }
+  } @else if $size == "tv-up" {
+    @media (min-width: map-get(v.$breakpoints, "tv")) {
+      @content;
+    }
+  }
+}

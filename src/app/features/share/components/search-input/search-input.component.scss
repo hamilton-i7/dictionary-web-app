@@ -1,3 +1,4 @@
+@use "../../../../../sass/abstracts/mixins" as m;
 @use "../../../../../sass/base/typography";
 
 $font-weight: map-get(
@@ -11,6 +12,10 @@ $font-weight: map-get(
     flex-direction: column;
     padding: 0 2.4rem;
     row-gap: 0.2rem;
+
+    @include m.for-size("small-up") {
+      padding: 0 4rem;
+    }
   }
 
   &__inner-container {

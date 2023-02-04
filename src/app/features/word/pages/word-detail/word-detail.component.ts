@@ -3,7 +3,11 @@ import { Word } from '../../../../core/models/word';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
 import { filter } from 'rxjs';
-import { HttpStatusCode } from '@angular/common/http';
+import {
+  NetworkError,
+  NotFoundError,
+  UnexpectedError,
+} from '../../../../core/utils/http-error';
 
 @Component({
   selector: 'app-word-detail',
@@ -15,8 +19,10 @@ export class WordDetailComponent implements OnInit {
   audioSrc?: string;
   phonetic?: string;
   sourceUrl?: string;
-  showUnexpectedError = false;
-  showNotFoundError = false;
+
+  showError = false;
+  errorTitle?: string;
+  errorMessage?: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,21 +39,36 @@ export class WordDetailComponent implements OnInit {
 
   getWord(): void {
     const word = this.route.snapshot.paramMap.get('word') || '';
-    this.dictionaryService.getWord(word).subscribe((response) => {
-      this.resetErrors();
+    this.dictionaryService.getWord(word).subscribe({
+      next: (words) => {
+        this.resetErrors();
 
-      switch (response.status) {
-        case HttpStatusCode.NotFound:
-          this.showNotFoundError = true;
-          break;
-        default:
-          this.showUnexpectedError = true;
-      }
-
-      this.word = response.body?.at(0);
-      this.sourceUrl = response.body?.at(0)?.sourceUrls?.at(0);
-      this.getAudioSrc();
-      this.getPhonetic();
+        this.word = words[0];
+        this.sourceUrl = words[0].sourceUrls[0];
+        this.getAudioSrc();
+        this.getPhonetic();
+      },
+      error: (err) => {
+        switch (true) {
+          case err instanceof NetworkError:
+            this.buildError(
+              'Not connected',
+              "Seems like you're not online at the moment. 😟"
+            );
+            break;
+          case err instanceof NotFoundError:
+            this.buildError(
+              'No definitions found',
+              "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead. 😟"
+            );
+            break;
+          case err instanceof UnexpectedError:
+            this.buildError(
+              'Something went wrong',
+              "Sorry pal, something went wrong, and it's not your fault. 😟"
+            );
+        }
+      },
     });
   }
 
@@ -76,8 +97,15 @@ export class WordDetailComponent implements OnInit {
     )?.audio;
   }
 
+  private buildError(title: string, message: string): void {
+    this.showError = true;
+    this.errorTitle = title;
+    this.errorMessage = message;
+  }
+
   resetErrors() {
-    this.showUnexpectedError = false;
-    this.showNotFoundError = false;
+    this.showError = false;
+    this.errorTitle = undefined;
+    this.errorMessage = undefined;
   }
 }

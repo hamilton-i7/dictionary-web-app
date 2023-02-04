@@ -1,3 +1,4 @@
+@use "../../sass/abstracts/mixins" as m;
 @use "../../sass/base/typography";
 
 .not-found {
@@ -9,6 +10,14 @@
     justify-content: center;
     padding: 0 2.4rem;
     row-gap: 3.2rem;
+
+    @include m.for-size("small-up") {
+      padding: 0 4rem;
+    }
+  }
+
+  &__img {
+    max-width: 34.5rem;
   }
 
   &__title {

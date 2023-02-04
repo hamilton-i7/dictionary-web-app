@@ -37,19 +37,10 @@
   </footer>
 </main>
 
-<main class="container error__container" *ngIf="showNotFoundError">
+<main class="container error__container" *ngIf="showError">
   <div class="error__emoji">😕</div>
-  <h1 class="error__title">{{ "no definitions found" | titlecase }}</h1>
+  <h1 class="error__title">{{ errorTitle | titlecase }}</h1>
   <p class="error__description">
-    Sorry pal, we couldn't find definitions for the word you were looking for.
-    You can try the search again at later time or head to the web instead.
-  </p>
-</main>
-
-<main class="container error__container" *ngIf="showUnexpectedError">
-  <div class="error__emoji">😕</div>
-  <h1 class="error__title">Something went wrong...</h1>
-  <p class="error__description">
-    Sorry pal, something went wrong, and its not your fault.
+    {{ errorMessage }}
   </p>
 </main>

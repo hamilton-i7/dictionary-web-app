@@ -3,11 +3,16 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpResponse,
+  HttpStatusCode,
 } from '@angular/common/http';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Word } from '../../../core/models/word';
 import { environment } from '../../../../environments/environment';
+import {
+  NetworkError,
+  NotFoundError,
+  UnexpectedError,
+} from '../../../core/utils/http-error';
 
 @Injectable({
   providedIn: 'root',
@@ -19,28 +24,20 @@ export class DictionaryService {
 
   constructor(private http: HttpClient) {}
 
-  getWord(word: string): Observable<HttpResponse<Word[]>> {
+  getWord(word: string): Observable<Word[]> {
     return this.http
-      .get<HttpResponse<Word[]>>(
-        `${environment.apiUrl}/${word}`,
-        this.httpOptions
-      )
-      .pipe(catchError(this.handleError<Word[]>('getWord', [])));
+      .get<Word[]>(`${environment.apiUrl}/${word}`, this.httpOptions)
+      .pipe(retry(3), catchError(this.handleError));
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result: T | null) {
-    return (error: HttpErrorResponse): Observable<HttpResponse<T>> => {
-      console.error(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(new HttpResponse<T>({ status: error.status, body: result }));
-    };
+  private handleError(error: HttpErrorResponse) {
+    switch (error.status) {
+      case 0:
+        return throwError(() => new NetworkError());
+      case HttpStatusCode.NotFound:
+        return throwError(() => new NotFoundError());
+      default:
+        return throwError(() => new UnexpectedError());
+    }
   }
 }

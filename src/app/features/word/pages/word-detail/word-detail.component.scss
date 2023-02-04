@@ -1,7 +1,12 @@
+@use "../../../../../sass/abstracts/mixins" as m;
 @use "../../../../../sass/base/typography" as tp;
 
 .container {
   padding: 0 2.4rem 8.4rem;
+
+  @include m.for-size("small-up") {
+    padding: 0 4rem 12rem;
+  }
 }
 
 .meaning {
