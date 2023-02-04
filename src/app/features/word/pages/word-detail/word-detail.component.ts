@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Word } from '../../../../core/models/word';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
-import { filter } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 import {
   NetworkError,
   NotFoundError,
@@ -20,9 +20,9 @@ export class WordDetailComponent implements OnInit {
   phonetic?: string;
   sourceUrl?: string;
 
-  showError = false;
-  errorTitle?: string;
-  errorMessage?: string;
+  showError$ = new BehaviorSubject(false);
+  errorTitle$ = new BehaviorSubject<string | undefined>(undefined);
+  errorMessage$ = new BehaviorSubject<string | undefined>(undefined);
 
   constructor(
     private route: ActivatedRoute,
@@ -98,14 +98,15 @@ export class WordDetailComponent implements OnInit {
   }
 
   private buildError(title: string, message: string): void {
-    this.showError = true;
-    this.errorTitle = title;
-    this.errorMessage = message;
+    this.word = undefined;
+    this.showError$.next(true);
+    this.errorTitle$.next(title);
+    this.errorMessage$.next(message);
   }
 
   resetErrors() {
-    this.showError = false;
-    this.errorTitle = undefined;
-    this.errorMessage = undefined;
+    this.showError$.next(false);
+    this.errorTitle$.next(undefined);
+    this.errorMessage$.next(undefined);
   }
 }

@@ -37,10 +37,10 @@
   </footer>
 </main>
 
-<main class="container error__container" *ngIf="showError">
+<main class="container error__container" *ngIf="showError$ | async">
   <div class="error__emoji">😕</div>
-  <h1 class="error__title">{{ errorTitle | titlecase }}</h1>
+  <h1 class="error__title">{{ errorTitle$ | async }}</h1>
   <p class="error__description">
-    {{ errorMessage }}
+    {{ errorMessage$ | async }}
   </p>
 </main>

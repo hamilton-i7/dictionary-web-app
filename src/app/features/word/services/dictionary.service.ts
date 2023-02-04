@@ -5,7 +5,7 @@ import {
   HttpHeaders,
   HttpStatusCode,
 } from '@angular/common/http';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Word } from '../../../core/models/word';
 import { environment } from '../../../../environments/environment';
 import {
@@ -27,7 +27,7 @@ export class DictionaryService {
   getWord(word: string): Observable<Word[]> {
     return this.http
       .get<Word[]>(`${environment.apiUrl}/${word}`, this.httpOptions)
-      .pipe(retry(3), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
