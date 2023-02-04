@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Word } from '../../../../core/models/word';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
 import { filter } from 'rxjs';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-word-detail',
@@ -10,10 +11,12 @@ import { filter } from 'rxjs';
   styleUrls: ['./word-detail.component.scss'],
 })
 export class WordDetailComponent implements OnInit {
-  @Input() word?: Word;
+  word?: Word;
   audioSrc?: string;
   phonetic?: string;
-  sourceUrl = '';
+  sourceUrl?: string;
+  showUnexpectedError = false;
+  showNotFoundError = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,31 +25,37 @@ export class WordDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.word) {
-      this.getWord();
-    }
-
+    this.getWord();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.getWord());
   }
 
   getWord(): void {
-    const word = this.route.snapshot.paramMap.get('word')!;
-    this.dictionaryService.getWord(word).subscribe((words) => {
-      if (!words.length) {
-        this.word = undefined;
-        return;
+    const word = this.route.snapshot.paramMap.get('word') || '';
+    this.dictionaryService.getWord(word).subscribe((response) => {
+      this.resetErrors();
+
+      switch (response.status) {
+        case HttpStatusCode.NotFound:
+          this.showNotFoundError = true;
+          break;
+        default:
+          this.showUnexpectedError = true;
       }
 
-      this.word = words[0];
-      this.sourceUrl = words[0].sourceUrls[0];
+      this.word = response.body?.at(0);
+      this.sourceUrl = response.body?.at(0)?.sourceUrls?.at(0);
       this.getAudioSrc();
       this.getPhonetic();
     });
   }
 
   getPhonetic(): void {
+    if (!this.word) {
+      this.phonetic = undefined;
+      return;
+    }
     if (this.word?.phonetic) {
       this.phonetic = this.word.phonetic;
       return;
@@ -57,10 +66,18 @@ export class WordDetailComponent implements OnInit {
   }
 
   getAudioSrc(): void {
-    if (!this.word) return;
+    if (!this.word) {
+      this.audioSrc = undefined;
+      return;
+    }
 
     this.audioSrc = this.word?.phonetics.find(
       (phonetic) => phonetic.audio !== ''
     )?.audio;
+  }
+
+  resetErrors() {
+    this.showUnexpectedError = false;
+    this.showNotFoundError = false;
   }
 }
