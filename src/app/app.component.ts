@@ -8,7 +8,6 @@ import { Theme, ThemeService } from './features/share/services/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'Dictionary Web App';
   font?: Font;
   theme?: Theme;
 
