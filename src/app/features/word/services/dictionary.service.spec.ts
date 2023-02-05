@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { DictionaryService } from './dictionary.service';
-import { dummyWords } from '../../../core/mocks/word';
+import { dummyTvWords } from '../../../core/mocks/word';
 import { environment } from '../../../../environments/environment';
 import { HttpStatusCode } from '@angular/common/http';
 import {
@@ -37,12 +37,12 @@ describe('DictionaryService', () => {
 
   it('should return array of Words', () => {
     service.getWord('tv').subscribe((words) => {
-      expect(words).toEqual(dummyWords);
+      expect(words).toEqual(dummyTvWords);
     });
 
     const request = controller.expectOne(`${environment.apiUrl}/tv`);
     expect(request.request.method).toBe('GET');
-    request.flush(dummyWords);
+    request.flush(dummyTvWords);
   });
 
   it('should return NotFoundError when given word not found in API', () => {
