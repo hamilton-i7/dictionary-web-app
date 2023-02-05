@@ -11,9 +11,9 @@ describe('ThemeToggleComponent', () => {
 
   beforeEach(async () => {
     themeServiceStub = {
-      theme: new BehaviorSubject<Theme>('light'),
+      theme$: new BehaviorSubject<Theme>('light'),
       changeTheme(theme) {
-        this.theme?.next(theme);
+        this.theme$?.next(theme);
       },
     };
     await TestBed.configureTestingModule({

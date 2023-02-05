@@ -8,10 +8,10 @@ import { COOKIE_THEME } from '../../../core/constants/cookies';
   providedIn: 'root',
 })
 export class ThemeService {
-  theme: BehaviorSubject<Theme>;
+  theme$: BehaviorSubject<Theme>;
 
   constructor(
-    public mediaMatcher: MediaMatcher,
+    private mediaMatcher: MediaMatcher,
     private cookieService: CookieService
   ) {
     const prefersDarkTheme = this.mediaMatcher.matchMedia(
@@ -20,17 +20,17 @@ export class ThemeService {
     const themeCookie = this.cookieService.get(COOKIE_THEME);
 
     if (themeCookie) {
-      this.theme = new BehaviorSubject<Theme>(themeCookie as Theme);
+      this.theme$ = new BehaviorSubject<Theme>(themeCookie as Theme);
       return;
     }
 
-    this.theme = new BehaviorSubject<Theme>(
+    this.theme$ = new BehaviorSubject<Theme>(
       prefersDarkTheme.matches ? 'dark' : 'light'
     );
   }
 
   changeTheme(theme: Theme) {
-    this.theme.next(theme);
+    this.theme$.next(theme);
     this.setCookie(theme);
   }
 

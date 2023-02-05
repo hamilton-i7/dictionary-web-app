@@ -12,7 +12,7 @@ export class ThemeToggleComponent implements OnInit {
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.themeService.theme.subscribe(
+    this.themeService.theme$.subscribe(
       (theme) => (this.darkThemeEnabled = theme === 'dark')
     );
   }
