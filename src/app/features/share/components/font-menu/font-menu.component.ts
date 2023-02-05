@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Font, FontService } from '../../services/font.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-font-menu',
@@ -8,7 +9,7 @@ import { Font, FontService } from '../../services/font.service';
 })
 export class FontMenuComponent implements OnInit {
   font: typeof Font = Font;
-  showMenu = false;
+  showMenu$ = new BehaviorSubject(false);
   selectedFont: Font = Font.SANS_SERIF;
 
   constructor(private fontService: FontService) {}
@@ -18,11 +19,11 @@ export class FontMenuComponent implements OnInit {
   }
 
   openMenu() {
-    this.showMenu = true;
+    this.showMenu$.next(true);
   }
 
   hideMenu() {
-    this.showMenu = false;
+    this.showMenu$.next(false);
   }
 
   changeFont(font: Font): void {

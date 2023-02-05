@@ -1,10 +1,11 @@
 <app-text-button
   [label]="selectedFont"
   (btnClick)="openMenu()"
+  appClickOutside
   (clickOutside)="hideMenu()"
 ></app-text-button>
 <div class="overlay">
-  <menu class="menu" [ngClass]="{ 'scale-in-menu': showMenu }">
+  <menu class="menu" [ngClass]="{ 'scale-in-menu': showMenu$ | async }">
     <li class="menu__item sans-serif">
       <button type="button" (click)="changeFont(font.SANS_SERIF)">
         Sans Serif
