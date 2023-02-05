@@ -14,7 +14,7 @@ export class FontMenuComponent implements OnInit {
   constructor(private fontService: FontService) {}
 
   ngOnInit(): void {
-    this.fontService.font.subscribe((font) => (this.selectedFont = font));
+    this.fontService.font$.subscribe((font) => (this.selectedFont = font));
   }
 
   openMenu() {

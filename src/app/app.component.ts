@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fontService.font.subscribe((font) => (this.font = font));
+    this.fontService.font$.subscribe((font) => (this.font = font));
     this.themeService.theme$.subscribe((theme) => (this.theme = theme));
   }
 
