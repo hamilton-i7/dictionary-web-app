@@ -10,7 +10,6 @@ export class WordHeadingComponent {
   @Input() phonetic?: string;
   @Input() audioSrc?: string;
 
-  isError = false;
   audio: HTMLAudioElement;
 
   constructor() {
