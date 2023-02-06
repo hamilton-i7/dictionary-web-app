@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- [Visit live site](https://your-live-site-url.com)
+- [Visit live site](https://dictionary-web-app-gold.vercel.app/browse)
 
 ## My process
 
