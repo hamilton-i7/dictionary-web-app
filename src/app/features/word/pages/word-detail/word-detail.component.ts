@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Word } from '../../../../core/models/word';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, filter, finalize } from 'rxjs';
 import {
   NetworkError,
   NotFoundError,
@@ -44,42 +44,46 @@ export class WordDetailComponent implements OnInit {
     const word = this.route.snapshot.paramMap.get('word') || '';
     this.spinner.show();
 
-    this.dictionaryService.getWord(word).subscribe({
-      next: (words) => {
-        this.resetErrors();
+    this.dictionaryService
+      .getWord(word)
+      .pipe(
+        finalize(() => {
+          setTimeout(() => {
+            this.spinner.hide();
+          }, MIN_LOADING_TIME_MS);
+        })
+      )
+      .subscribe({
+        next: (words) => {
+          this.resetErrors();
 
-        this.word = words[0];
-        this.sourceUrl = words[0].sourceUrls[0];
-        this.getAudioSrc();
-        this.getPhonetic();
-      },
-      error: (err) => {
-        switch (true) {
-          case err instanceof NetworkError:
-            this.buildError(
-              'Not connected',
-              "Seems like you're not online at the moment. 😟"
-            );
-            break;
-          case err instanceof NotFoundError:
-            this.buildError(
-              'No definitions found',
-              "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead. 😟"
-            );
-            break;
-          case err instanceof UnexpectedError:
-            this.buildError(
-              'Something went wrong',
-              "Sorry pal, something went wrong, and it's not your fault. 😟"
-            );
-        }
-      },
-      complete: () => {
-        setTimeout(() => {
-          this.spinner.hide();
-        }, MIN_LOADING_TIME_MS);
-      },
-    });
+          this.word = words[0];
+          this.sourceUrl = words[0].sourceUrls[0];
+          this.getAudioSrc();
+          this.getPhonetic();
+        },
+        error: (err) => {
+          switch (true) {
+            case err instanceof NetworkError:
+              this.buildError(
+                'Not connected',
+                "Seems like you're not online at the moment. 😟"
+              );
+              break;
+            case err instanceof NotFoundError:
+              this.buildError(
+                'No definitions found',
+                "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead. 😟"
+              );
+              break;
+            case err instanceof UnexpectedError:
+              this.buildError(
+                'Something went wrong',
+                "Sorry pal, something went wrong, and it's not your fault. 😟"
+              );
+          }
+        },
+      });
   }
 
   getPhonetic(): void {
