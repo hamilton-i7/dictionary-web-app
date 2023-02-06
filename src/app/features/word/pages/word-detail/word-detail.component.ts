@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from '../../../../core/models/word';
-import {
-  ActivatedRoute,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
 import { BehaviorSubject, filter } from 'rxjs';
 import {
@@ -43,15 +36,7 @@ export class WordDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getWord();
     this.router.events
-      .pipe(
-        filter(
-          (event) =>
-            event instanceof NavigationEnd ||
-            event instanceof NavigationStart ||
-            event instanceof NavigationCancel ||
-            event instanceof NavigationError
-        )
-      )
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.getWord());
   }
 
