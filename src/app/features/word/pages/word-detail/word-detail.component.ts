@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from '../../../../core/models/word';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { DictionaryService } from '../../services/dictionary.service';
 import { BehaviorSubject, filter } from 'rxjs';
 import {
@@ -8,6 +15,8 @@ import {
   NotFoundError,
   UnexpectedError,
 } from '../../../../core/utils/http-error';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MIN_LOADING_TIME_MS } from '../../../../core/constants/status';
 
 @Component({
   selector: 'app-word-detail',
@@ -27,18 +36,29 @@ export class WordDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dictionaryService: DictionaryService
+    private dictionaryService: DictionaryService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.getWord();
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+      .pipe(
+        filter(
+          (event) =>
+            event instanceof NavigationEnd ||
+            event instanceof NavigationStart ||
+            event instanceof NavigationCancel ||
+            event instanceof NavigationError
+        )
+      )
       .subscribe(() => this.getWord());
   }
 
   getWord(): void {
     const word = this.route.snapshot.paramMap.get('word') || '';
+    this.spinner.show();
+
     this.dictionaryService.getWord(word).subscribe({
       next: (words) => {
         this.resetErrors();
@@ -68,6 +88,11 @@ export class WordDetailComponent implements OnInit {
               "Sorry pal, something went wrong, and it's not your fault. 😟"
             );
         }
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.spinner.hide();
+        }, MIN_LOADING_TIME_MS);
       },
     });
   }

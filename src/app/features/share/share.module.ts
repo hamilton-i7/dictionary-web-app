@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FontMenuComponent } from './components/font-menu/font-menu.component';
@@ -8,6 +8,8 @@ import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.com
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { CookieService } from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,12 @@ import { CookieService } from 'ngx-cookie-service';
     TopBarComponent,
     ClickOutsideDirective,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
+  ],
   exports: [
     FontMenuComponent,
     SearchInputComponent,
@@ -26,7 +33,10 @@ import { CookieService } from 'ngx-cookie-service';
     ThemeToggleComponent,
     TopBarComponent,
     ClickOutsideDirective,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   providers: [CookieService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShareModule {}

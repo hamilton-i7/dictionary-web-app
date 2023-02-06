@@ -24,7 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon-32x32.png", "src/assets"],
-            "styles": ["src/sass/styles.scss"],
+            "styles": [
+              "src/sass/styles.scss",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -85,7 +88,10 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon-32x32.png", "src/assets"],
-            "styles": ["src/sass/styles.scss"],
+            "styles": [
+              "src/sass/styles.scss",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css"
+            ],
             "scripts": []
           }
         },
